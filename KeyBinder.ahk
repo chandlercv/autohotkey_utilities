@@ -5,31 +5,40 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
 ; Bind Ctrl+Alt+Shift+B to launch or bring Microsoft Edge to the foreground
 ^!+b::
 {
-   run( autoHotKeyUtilRoot . "surface_edge.exe")
+    run(autoHotKeyUtilRoot . "chrome_lnch.exe")
 }
 
 ^!+n::
 {
-   run( autoHotKeyUtilRoot . "notion.exe")
+    run(autoHotKeyUtilRoot . "notion_lnch.exe")
 }
 
 ^!+c::
 {
-   run( autoHotKeyUtilRoot . "code.exe")
+    run(autoHotKeyUtilRoot . "code_lnch.exe")
 }
 
 ^!+s::
 {
-   run( autoHotKeyUtilRoot . "slack.exe")
-}
-
-^!+o::
-{
-   run( autoHotKeyUtilRoot . "slack.exe")
+    run(autoHotKeyUtilRoot . "slack_lnch.exe")
 }
 
 ^!+z::
 {
-   run( autoHotKeyUtilRoot . "zoom.exe")
+    run(autoHotKeyUtilRoot . "zoom_lnch.exe")
 }
 
+^!+o::
+{
+    run(autoHotKeyUtilRoot . "outlook_lnch.exe")
+}
+
+^!+m::
+{
+    run(autoHotKeyUtilRoot . "freeplane_lnch.exe")
+}
+
+^+g::
+{
+    Send("https://documentcrunch.atlassian.net/browse/")
+}
