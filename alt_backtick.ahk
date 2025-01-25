@@ -4,14 +4,14 @@ global idList := []
 global currentIndex := 0
 global currentProcess := ""
 
-; Hotkey to cycle through windows (Alt + `)
-!`:: {
+; Hotkey to cycle through windows (Ctl + `)
+^`:: {
     ;FileAppend("Alt ` pressed`n", "debug.log")
     CycleWindows(1)
 }
 
-; Hotkey to cycle through windows in reverse (Alt + Shift + `)
-+!`:: {
+; Hotkey to cycle through windows in reverse (ctl + Shift + `)
++^`:: {
     ;FileAppend("Shift Alt ` pressed`n", "debug.log")
     CycleWindows(-1)
 }
