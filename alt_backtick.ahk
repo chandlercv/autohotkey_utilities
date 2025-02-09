@@ -62,9 +62,6 @@ CycleWindows(direction) {
     next_id := idList[currentIndex]
     if WinExist(next_id) {
         WinActivate(next_id)
-        WinSetTransparent(200, next_id) ; Set the window transparency to 200 (0-255, where 0 is fully transparent and 255 is fully opaque)
-        Sleep(250) ; Wait for 500 milliseconds
-        WinSetTransparent(255, next_id) ; Reset the window transparency to fully opaque
     }
 }
 
