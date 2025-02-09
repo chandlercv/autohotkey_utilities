@@ -42,3 +42,34 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
 {
     Send("https://documentcrunch.atlassian.net/browse/")
 }
+
+
+F18::
+{
+    Send("#{Left}")
+}
+
+F19::
+{
+    Send("#{Right}")
+}
+
+F24::
+{
+    Send("#n")
+}
+
+F16::
+{
+    Send("^z")
+}
+
+F17::
+{
+    Send("^y")
+}
+
+F23::
+{
+    Send("^{F5}")
+}
