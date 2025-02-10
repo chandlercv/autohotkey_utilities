@@ -5,37 +5,51 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
 ; Bind Ctrl+Alt+Shift+B to launch or bring Microsoft Edge to the foreground
 ^!+b::
 {
-    run(autoHotKeyUtilRoot . "chrome_lnch.exe")
+    run(autoHotKeyUtilRoot . "chrome_lnch.ahk")
 }
 
 ^!+n::
 {
-    run(autoHotKeyUtilRoot . "notion_lnch.exe")
+    run(autoHotKeyUtilRoot . "notion_lnch.ahk")
+}
+
+F15::
+{
+    run(autoHotKeyUtilRoot . "code_lnch.ahk")
 }
 
 ^!+c::
 {
-    run(autoHotKeyUtilRoot . "code_lnch.exe")
+    run(autoHotKeyUtilRoot . "code_lnch.ahk")
 }
 
 ^!+s::
 {
-    run(autoHotKeyUtilRoot . "slack_lnch.exe")
+    run(autoHotKeyUtilRoot . "slack_lnch.ahk")
+}
+F13::
+{
+    run(autoHotKeyUtilRoot . "slack_lnch.ahk")
 }
 
 ^!+z::
 {
-    run(autoHotKeyUtilRoot . "zoom_lnch.exe")
+    run(autoHotKeyUtilRoot . "zoom_lnch.ahk")
 }
 
 ^!+o::
 {
-    run(autoHotKeyUtilRoot . "outlook_lnch.exe")
+    run(autoHotKeyUtilRoot . "outlook_lnch.ahk")
+}
+
+^F13::
+{
+    run(autoHotKeyUtilRoot . "outlook_lnch.ahk")
 }
 
 ^!+m::
 {
-    run(autoHotKeyUtilRoot . "freeplane_lnch.exe")
+    run(autoHotKeyUtilRoot . "freeplane_lnch.ahk")
 }
 
 ^+g::
@@ -43,6 +57,10 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
     Send("https://documentcrunch.atlassian.net/browse/")
 }
 
+F20::
+{
+    Run(autoHotKeyUtilRoot . "surface_edge_lnch.ahk")
+}
 
 F18::
 {
