@@ -8,16 +8,37 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
     run(autoHotKeyUtilRoot . "chrome_lnch.ahk")
 }
 
+F23::
+{
+    run(autoHotKeyUtilRoot . "chrome_lnch.ahk")
+}
+
 ^!+n::
 {
     run(autoHotKeyUtilRoot . "notion_lnch.ahk")
+}
+F21::
+{
+    run(autoHotKeyUtilRoot . "notion_lnch.ahk")
+}
+^F21::
+{
+    run(autoHotKeyUtilRoot . "freeplane_lnch.ahk")
+}
+
+F22::
+{
+    run(autoHotKeyUtilRoot . "fellow_lnch.ahk")
+}
+^!+f::
+{
+    run(autoHotKeyUtilRoot . "fellow_lnch.ahk")
 }
 
 F15::
 {
     run(autoHotKeyUtilRoot . "code_lnch.ahk")
 }
-
 ^!+c::
 {
     run(autoHotKeyUtilRoot . "code_lnch.ahk")
@@ -33,6 +54,10 @@ F13::
 }
 
 ^!+z::
+{
+    run(autoHotKeyUtilRoot . "zoom_lnch.ahk")
+}
+F14::
 {
     run(autoHotKeyUtilRoot . "zoom_lnch.ahk")
 }
@@ -72,11 +97,6 @@ F19::
     Send("#{Right}")
 }
 
-F24::
-{
-    Send("#n")
-}
-
 F16::
 {
     Send("^z")
@@ -87,7 +107,12 @@ F17::
     Send("^y")
 }
 
-F23::
+F24::
 {
     Send("^{F5}")
+}
+
+^#n::
+{
+    Run(autoHotKeyUtilRoot . "tidbit.svg")
 }
