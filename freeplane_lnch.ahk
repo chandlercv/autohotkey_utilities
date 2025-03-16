@@ -3,22 +3,25 @@
 userProfile := EnvGet("USERPROFILE")
 
 ; First check just for javaw.exe
-if existingWindow := WinExist("ahk_exe javaw.exe")
-{
-    MsgBox "Found javaw.exe window: " . WinGetTitle(existingWindow)
-    
+if existingWindow := WinExist("ahk_exe javaw.exe") {
+    windowTitle := WinGetTitle(existingWindow)
+    windowPID := WinGetPID(existingWindow)
+    windowProcessName := ProcessGetName(windowPID)
+
     ; Now check for Freeplane specifically
-    if freeplaneWindow := WinExist("ahk_exe javaw.exe", "Freeplane")
-    {
-        MsgBox "Found Freeplane window: " . WinGetTitle(freeplaneWindow)
-        WinActivate(freeplaneWindow)
+    freeplaneFound := false
+    windowsList := WinGetList("ahk_exe javaw.exe")
+    for freeplaneWindow in windowsList {
+        freeplaneTitle := WinGetTitle(freeplaneWindow)
+        if RegExMatch(freeplaneTitle, ".* - Freeplane -.*") {
+            WinActivate(freeplaneWindow)
+            freeplaneFound := true
+            break
+        }
     }
-    else 
-    {
-        MsgBox "Found javaw.exe but not Freeplane"
+    if !freeplaneFound {
+        MsgBox("Found javaw.exe but not Freeplane")
     }
-}
-else
-{
-    MsgBox "No javaw.exe windows found"
+} else {
+    MsgBox("No javaw.exe windows found")
 }
