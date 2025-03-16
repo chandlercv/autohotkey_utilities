@@ -18,9 +18,14 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
     run(autoHotKeyUtilRoot . "fellow_lnch.ahk")
 }
 
-^!+c::
+^!+v::
 {
     run(autoHotKeyUtilRoot . "code_lnch.ahk")
+}
+
+^!+c::
+{
+    run(autoHotKeyUtilRoot . "cursor_lnch.ahk")
 }
 
 ^!+s::
@@ -41,6 +46,7 @@ autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
 ^!+m::
 {
     run(autoHotKeyUtilRoot . "freeplane_lnch.ahk")
+    ; run("C:\Program Files\Freeplane\freeplane.exe")
 }
 
 ^+g::
@@ -66,4 +72,31 @@ F17::
 ^#n::
 {
     Run(autoHotKeyUtilRoot . "tidbit.svg")
+}
+
+^+Space::
+{
+    FileAppend("Ctrl+Shift+Space was pressed`n", "debug.log")
+    MoveCursorToCenter()
+}
+
+MoveCursorToCenter() {
+    FileAppend("MoveCursorToCenter`n", "debug.log")
+
+    ; Set coordinate mode to screen for absolute positioning
+    CoordMode("Mouse", "Screen")
+
+    ; Get the active window's position and size
+    WinGetPos(&winX, &winY, &winWidth, &winHeight, "A")
+    FileAppend("Window Position and Size: X=" winX " Y=" winY " Width=" winWidth " Height=" winHeight "`n", "debug.log"
+    )
+
+    ; Calculate the center position relative to the window's absolute screen position
+    centerX := winX + (winWidth // 2)
+    centerY := winY + (winHeight // 2)
+    FileAppend("Center Position: X=" centerX " Y=" centerY "`n", "debug.log")
+
+    ; Move the cursor to the center
+    ; MouseMove(centerX, centerY)
+    DllCall("SetCursorPos", "int", centerX, "int", centerY)
 }
