@@ -1,6 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 
 userProfile := EnvGet("USERPROFILE")
+freeplaneExePath := "C:\Program Files\Freeplane\freeplane.exe"
 
 ; First check just for javaw.exe
 if existingWindow := WinExist("ahk_exe javaw.exe") {
@@ -20,8 +21,8 @@ if existingWindow := WinExist("ahk_exe javaw.exe") {
         }
     }
     if !freeplaneFound {
-        MsgBox("Found javaw.exe but not Freeplane")
+        Run(freeplaneExePath)
     }
 } else {
-    MsgBox("No javaw.exe windows found")
+    Run(freeplaneExePath)
 }
