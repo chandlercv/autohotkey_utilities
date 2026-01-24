@@ -2,6 +2,9 @@
 
 autoHotKeyUtilRoot := EnvGet("AUTOHOTKEYUTILS")
 
+; Launch persistent GUI launcher script on startup
+Run(autoHotKeyUtilRoot . "shortcuts_folder_lnch.ahk")
+
 ; Global variable to enable/disable hotkeys (useful during Zoom screen sharing)
 global HotkeysEnabled := true
 
