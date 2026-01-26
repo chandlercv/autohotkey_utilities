@@ -79,7 +79,7 @@ global HotkeysEnabled := true
 
 ^+g::
 {
-    Send("https://linear.app/document-crunch/issue/")
+    Send("https://linear.app/document-crunch/issue/trip")
 }
 
 F16::
