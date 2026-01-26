@@ -49,7 +49,7 @@ ToggleLauncher() {
     launcherGui.SetFont("s12 cWhite", "Segoe UI")
     launcherGui.OnEvent("Close", (*) => ToggleLauncher())
 
-    ; Build button grid with square buttons
+    ; Build button grid with square buttons or icons
     for idx, app in apps {
         opts := "w" btnSize " h" btnSize
         if (idx = 1) {
@@ -59,8 +59,14 @@ ToggleLauncher() {
         } else {
             opts .= " x+m yp"
         }
-        btn := launcherGui.AddButton(opts, app.label)
-        btn.OnEvent("Click", MakeLauncher(app.path))
+
+        if (app.iconPath != "") {
+            pic := launcherGui.AddPicture(opts . " BackgroundTrans", app.iconPath)
+            pic.OnEvent("Click", MakeLauncher(app.path))
+        } else {
+            btn := launcherGui.AddButton(opts, app.label)
+            btn.OnEvent("Click", MakeLauncher(app.path))
+        }
     }
 
     touchscreenMonitor := FindTouchscreenMonitor()
@@ -113,11 +119,38 @@ GetAppList(root, configFile) {
         if (eqPos) {
             label := Trim(SubStr(line, 1, eqPos - 1))
             filename := Trim(SubStr(line, eqPos + 1))
-            apps.Push({label: label, path: root . filename})
+            iconPath := ResolveIconPath(root, configFile, label, filename)
+            apps.Push({label: label, path: root . filename, iconPath: iconPath})
         }
     }
     
     return apps
+}
+
+ResolveIconPath(root, configFile, label, scriptFile) {
+    iconPath := ""
+
+    try iconPath := IniRead(configFile, "Icons", label, "")
+    if (iconPath != "") {
+        if !IsAbsolutePath(iconPath)
+            iconPath := root . iconPath
+        if FileExist(iconPath)
+            return iconPath
+    }
+
+    SplitPath(scriptFile, , , , &nameNoExt)
+    iconsDir := root . "icons\\"
+    for ext in [".png", ".ico", ".jpg", ".bmp", ".gif"] {
+        candidate := iconsDir . nameNoExt . ext
+        if FileExist(candidate)
+            return candidate
+    }
+
+    return ""
+}
+
+IsAbsolutePath(path) {
+    return RegExMatch(path, "i)^[A-Z]:\\") || SubStr(path, 1, 2) = "\\\\"
 }
 
 FindTouchscreenMonitor() {
