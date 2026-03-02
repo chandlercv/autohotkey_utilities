@@ -159,7 +159,8 @@ FindTouchscreenMonitor() {
         MonitorGet(A_Index, &monLeft, &monTop, &monRight, &monBottom)
         width := monRight - monLeft
         height := monBottom - monTop
-        if (width = 1072 && height = 640) {
+        if ((width = 1340 && height = 800)
+            || (width = 1072 && height = 640)) {
             return A_Index
         }
     }
